@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layout/Layout.astro";
+import brdert_pfp from "../assets/brdert_pfp.gif";
+
+const links = [
+  {
+    name: "Twitch",
+    url: "https://www.twitch.tv/brdert",
+  },
+  {
+    name: "Bluesky",
+    url: "https://bsky.app/profile/brdert.com",
+  },
+  {
+    name: "Discord",
+    url: "https://discord.gg/C2ewtJdZrw",
+  },
+];
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.svg"
+);
+
+const getImagePath = (name: string) => `/src/assets/${name.toLowerCase()}.svg`;
+---
+
+<Layout>
+  <main
+    class="w-full h-screen flex flex-col justify-center items-center p-8 gap-4"
+  >
+    <Image src={brdert_pfp} alt="" class="rounded-2xl" draggable="false" />
+    <h1 class="text-3xl font-bold text-white">Brdert</h1>
+    <span class="text-lg text-white">Indie Game Streamer</span>
+    <nav>
+      <ul class="flex gap-4">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group"
+              >
+                <Image
+                  src={images[getImagePath(link.name)]()}
+                  alt={link.name}
+                  class="w-8 h-8 group-hover:scale-110 transition-transform"
+                  draggable="false"
+                  title={link.name}
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </main>
+</Layout>

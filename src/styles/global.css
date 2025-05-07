@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --indigo: hsla(290, 88%, 23%, 1);
+  --dogwood-rose: hsla(338, 67%, 49%, 1);
+  --space-cadet: hsla(236, 27%, 24%, 1);
+  --black: hsla(240, 100%, 1%, 1);
+  --rich-black: hsla(240, 87%, 3%, 1);
+}
+
+html {
+  background-color: color-mix(in srgb, var(--indigo) 35%, var(--black) 65%);
+}
